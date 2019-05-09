@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="item"
+                type="omarbradley.com.moviesearchapplication.recyclerview.MovieItem"/>
+    </data>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_margin="16dp"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:layout_width="90dp"
+                android:layout_height="160dp"
+                android:layout_marginEnd="16dp"
+                app:imageUrl="@{item.thumnailUrl}"/>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/textBlack"
+                    android:textStyle="bold"
+                    android:text="@{item.titleText}"/>
+
+            <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rating="@{item.getUserRating}"
+                    android:stepSize="0.5"
+                    android:max="5"
+                    android:numStars="5"
+                    android:isIndicator="true"
+                    android:textColor="@color/textGrayBlack"
+                    style="?android:attr/ratingBarStyleIndicator"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/textGrayBlack"
+                    android:text="@{item.openYearText}"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/textGrayBlack"
+                    android:text="@{item.directorsText}"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/textGrayBlack"
+                    android:text="@{item.actorsText}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
