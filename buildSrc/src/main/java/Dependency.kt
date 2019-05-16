@@ -9,7 +9,14 @@ object Dependency {
         const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Version.kotlin}"
     }
 
+    object Coroutine {
+
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
+        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutine}"
+    }
+
     object KotlinTest {
+
         const val kotlinTest = "io.kotlintest:kotlintest-runner-junit5:${Version.kotlinTest}"
     }
 
@@ -19,6 +26,19 @@ object Dependency {
         const val ktx = "androidx.core:core-ktx:${Version.ktx}"
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Version.constraintlayout}"
         const val recyclerview = "androidx.recyclerview:recyclerview:${Version.recyclerview}"
+    }
+
+    object Paging {
+
+        const val runtimeKtx = "androidx.paging:paging-runtime-ktx:${Version.paging}"
+        const val runtime = "androidx.paging:paging-runtime:${Version.paging}"
+        const val common = "androidx.paging:paging-common-ktx:${Version.paging}"
+    }
+
+    object Lifecycle {
+
+        const val compiler = "androidx.lifecycle:lifecycle-compiler:${Version.lifecycle}"
+        const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
     }
 
     object Junit {

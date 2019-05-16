@@ -8,11 +8,13 @@ class MovieItemViewHolder(
 ) : BaseDataBindingViewHolder(binding) {
 
     fun bind(item: MovieItem) {
-        binding.item = item
+        with(binding) {
+            this.item = item
+            executePendingBindings()
+        }
         itemView.setOnClickListener {
             // 웹뷰로 이동!
         }
     }
 
 }
-

@@ -10,5 +10,4 @@ interface MovieApi {
     @GET("search/movie.json")
     fun getMovies(@QueryMap queries: Map<String, String>): Deferred<MovieJson>
 
-
 }

@@ -13,7 +13,7 @@ class MovieApiTest : BehaviorSpec({
         movieApi
     }
 
-    given("'엑스맨' 검색어가 주어진다") {
+    /*given("'엑스맨' 검색어가 주어진다") {
         val queryMap = SearchMovieQuery("액스맨").toQueryMap()
 
         `when`("영화 검색 api 호출 시") {
@@ -21,9 +21,24 @@ class MovieApiTest : BehaviorSpec({
                 .await()
 
             then("'액스맨' 영화 정보를 가져온다") {
-                println("data ${response.items}")
+                println("data :${response.items}")
+                response shouldNotBe null
+            }
+        }
+    }*/
+
+    given("'엑스맨' 검색어가 1~3까지 주어진다") {
+        val queryMap = SearchMovieQuery("액스맨", start = 2, display = 10).toQueryMap()
+
+        `when`("영화 검색 api 호출 시") {
+            val response = api.getMovies(queryMap)
+                .await()
+
+            then("1~3번째의 '액스맨' 영화 정보를 가져온다") {
+                println("data :${response.items}")
                 response shouldNotBe null
             }
         }
     }
+
 })

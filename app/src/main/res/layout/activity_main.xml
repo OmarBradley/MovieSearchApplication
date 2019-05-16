@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bgWhite"
-        tools:context=".MainActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditText
-            android:id="@+id/editText_searchKeyword"
-            android:layout_width="0dp"
+    <data>
+
+        <variable
+                name="viewModel"
+                type="omarbradley.com.moviesearchapplication.view.MainViewModel"/>
+
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/barrier_search"
-            app:layout_constraintEnd_toStartOf="@+id/button_search"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:orientation="vertical">
 
-    <Button
-            android:id="@+id/button_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/label.search"
-            app:layout_constraintBottom_toTopOf="@+id/barrier_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editText_searchKeyword"
-            app:layout_constraintTop_toTopOf="parent"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="editText_searchKeyword,button_search"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerview_searchResult"/>
+            <EditText
+                    android:id="@+id/editText_searchKeyword"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:afterTextChanged='@{(s) -> viewModel.input.inputSearchKeyword(s.toString ?? "")}'/>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_searchResult"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/barrier_search"
-            app:layout_constraintVertical_bias="0.0"/>
+            <Button
+                    android:id="@+id/button_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/label.search"
+                    android:onClick='@{(v) -> viewModel.input.onClickSearchButton()}'/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_searchResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="LinearLayoutManager"/>
+
+    </LinearLayout>
+
+</layout>

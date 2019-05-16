@@ -4,6 +4,7 @@ plugins {
     id(Plugin.android)
     id(Plugin.kotlinAndroid)
     id(Plugin.kotlinExtensions)
+    id(Plugin.kotlinKapt)
     id(Plugin.androidJunit5)
 }
 
@@ -47,10 +48,19 @@ dependencies {
     implementation(Dependency.AndroidX.ktx)
     implementation(Dependency.AndroidX.constraintlayout)
     implementation(Dependency.AndroidX.recyclerview)
+    implementation(Dependency.Paging.runtimeKtx)
+    implementation(Dependency.Paging.common)
+    implementation(Dependency.Coroutine.android)
+    implementation(Dependency.Coroutine.core)
+
     implementation(Dependency.Koin.core)
     implementation(Dependency.Koin.coreExt)
     implementation(Dependency.Koin.androidxScope)
     implementation(Dependency.Koin.androidxViewmodel)
+
+    implementation(Dependency.Lifecycle.viewModelKtx)
+
+    kapt(Dependency.Lifecycle.compiler)
 
     testImplementation(Dependency.Koin.test)
     testImplementation(Dependency.Spek.dslJvm)

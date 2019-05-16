@@ -39,9 +39,8 @@
             <RatingBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:rating="@{item.getUserRating}"
+                    android:rating="@{item.userRating}"
                     android:stepSize="0.5"
-                    android:max="5"
                     android:numStars="5"
                     android:isIndicator="true"
                     android:textColor="@color/textGrayBlack"

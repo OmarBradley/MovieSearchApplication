@@ -14,11 +14,11 @@ data class MovieItem(
 
 fun Movie.toMovieItem() =
     MovieItem(
-        thumnailUrl = this.thumnailUrl,
-        titleText = this.title,
-        directorsText = this.director.joinToString(),
-        userRating = this.userRating,
-        openYearText = this.openYear.toString(),
-        actorsText = this.actors.joinToString(),
-        link = this.link
+        thumnailUrl = thumnailUrl,
+        titleText = title,
+        directorsText = director.joinToString(),
+        userRating = userRating / 2.0F,
+        openYearText = openYear.toString(),
+        actorsText = actors.joinToString(),
+        link = link
     )
