@@ -2,11 +2,11 @@ package omarbradley.com.util.view
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 
-@BindingAdapter("imageUrl")
-fun loadImage(imageView: ImageView, imageUrl: String) {
-    Glide.with(imageView)
+@BindingAdapter("imageUrl", "requestManager")
+fun loadImage(imageView: ImageView, imageUrl: String, requestManager: RequestManager) {
+    requestManager
         .load(imageUrl)
         .into(imageView)
 }

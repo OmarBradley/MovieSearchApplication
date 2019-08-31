@@ -1,71 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
                 name="item"
-                type="omarbradley.com.moviesearchapplication.recyclerview.MovieItem"/>
+                type="omarbradley.com.moviesearchapplication.recyclerview.MovieItem" />
+
+        <variable
+                name="requestManager"
+                type="com.bumptech.glide.RequestManager" />
+
     </data>
 
     <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
 
         <ImageView
                 android:layout_width="90dp"
                 android:layout_height="160dp"
                 android:layout_marginEnd="16dp"
-                app:imageUrl="@{item.thumnailUrl}"/>
+                app:imageUrl="@{item.thumnailUrl}"
+                app:requestManager="@{requestManager}" />
 
         <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textSize="20sp"
+                    android:text="@{item.titleText}"
                     android:textColor="@color/textBlack"
-                    android:textStyle="bold"
-                    android:text="@{item.titleText}"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             <RatingBar
+                    style="?android:attr/ratingBarStyleIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:numStars="5"
                     android:rating="@{item.userRating}"
                     android:stepSize="0.5"
-                    android:numStars="5"
-                    android:isIndicator="true"
-                    android:textColor="@color/textGrayBlack"
-                    style="?android:attr/ratingBarStyleIndicator"/>
+                    android:textColor="@color/textGrayBlack" />
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/textGrayBlack"
-                    android:text="@{item.openYearText}"/>
+                    android:text="@{item.openYearText}"
+                    android:textColor="@color/textGrayBlack" />
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/textGrayBlack"
-                    android:text="@{item.directorsText}"/>
+                    android:text="@{item.directorsText}"
+                    android:textColor="@color/textGrayBlack" />
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/textGrayBlack"
-                    android:text="@{item.actorsText}"/>
+                    android:text="@{item.actorsText}"
+                    android:textColor="@color/textGrayBlack" />
 
         </LinearLayout>
 

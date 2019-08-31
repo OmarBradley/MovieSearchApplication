@@ -2,6 +2,7 @@ package omarbradley.com.moviesearchapplication.view
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
 import omarbradley.com.moviesearchapplication.R
 import omarbradley.com.moviesearchapplication.databinding.ActivityMainBinding
@@ -15,7 +16,7 @@ class MainActivity : BaseActivity() {
 
     private val viewModel: MainViewModel
             by viewModel()
-    lateinit var adapter: MovieItemAdapter
+    private lateinit var adapter: MovieItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +27,7 @@ class MainActivity : BaseActivity() {
             viewModel = this@MainActivity.viewModel
         }
 
-        adapter = MovieItemAdapter()
+        adapter = MovieItemAdapter(Glide.with(this))
         with(recyclerview_searchResult) {
             adapter = this@MainActivity.adapter
             addVerticalDecoration()
