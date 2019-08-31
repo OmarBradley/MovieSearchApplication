@@ -10,60 +10,46 @@ import omarbradley.com.moviesearchapplication.recyclerview.MovieItem
 import omarbradley.com.moviesearchapplication.recyclerview.MovieItemDataSourceFactory
 import omarbradley.com.moviesearchapplication.recyclerview.movieItemPagedListConfig
 import omarbradley.com.util.base.BaseViewModel
-import omarbradley.com.util.view.refreshDataSource
+import omarbradley.com.util.lazyMap
+import omarbradley.com.util.view.invalidate
 
 class MainViewModel(
-    private val searchMovieUseCase: SearchMovieUseCase
+    searchMovieUseCase: SearchMovieUseCase
 ) : BaseViewModel() {
 
-    val input by lazy {
-        object : Input {
-            override fun onClickSearchButton() {
-                if (searchKeyword.value.isNullOrBlank())
-                    toastMessage.value = R.string.message_blank_search_keyword
-                else
-                    onClickSearchButtonEvent.value = Unit
-            }
-
-            override fun inputSearchKeyword(searchKeyword: String) {
-                this@MainViewModel.searchKeyword.value = searchKeyword
-            }
-        }
-    }
-
-    private val searchKeyword = MutableLiveData<String>()
-    private val toastMessage = MutableLiveData<Int>()
-    private val onClickSearchButtonEvent = MutableLiveData<Unit>()
-
-    val output by lazy {
-        object : Output {
-            override fun onClickSearchButtonEvent() = onClickSearchButtonEvent
-            override fun refreshSearchedMovies(): Unit? = loadSearchedMovies().value?.refreshDataSource()
-            override fun loadSearchedMovies(): LiveData<PagedList<MovieItem>> = LivePagedListBuilder(
-                MovieItemDataSourceFactory(searchMovieUseCase, coroutineScope, searchKeyword.value ?: ""),
+    private var searchKeyword: String = ""
+    private val _toastMessage = MutableLiveData<Int>()
+    private val _onClickSearchButtonEvent = MutableLiveData<Unit>()
+    private val loadSearchedMoviesMap: Map<String, LiveData<PagedList<MovieItem>>> =
+        lazyMap { searchKeyword ->
+            return@lazyMap LivePagedListBuilder(
+                MovieItemDataSourceFactory(searchMovieUseCase, coroutineScope, searchKeyword),
                 movieItemPagedListConfig
             ).build()
-
-            override fun searchKeyword(): LiveData<String> = searchKeyword
-            override fun toastMessageRes(): LiveData<Int> = toastMessage
         }
+
+    val onClickSearchButtonEvent: LiveData<Unit> = _onClickSearchButtonEvent
+    val toastMessageRes: LiveData<Int> = _toastMessage
+    val loadSearchedMovies: LiveData<PagedList<MovieItem>>
+        get() = loadSearchedMoviesMap.getValue(searchKeyword)
+
+    fun invalidateDataSource() {
+        loadSearchedMovies.value?.invalidate()
+    }
+
+    fun onClickSearchButton() {
+        if (searchKeyword.isBlank())
+            _toastMessage.value = R.string.message_blank_search_keyword
+        else
+            _onClickSearchButtonEvent.value = Unit
+    }
+
+    fun inputSearchKeyword(searchKeyword: String) {
+        this.searchKeyword = searchKeyword
     }
 
     override fun handleError(error: Throwable) {
-        toastMessage.value = R.string.message_error
-    }
-
-    interface Input {
-        fun onClickSearchButton()
-        fun inputSearchKeyword(searchKeyword: String)
-    }
-
-    interface Output {
-        fun onClickSearchButtonEvent(): LiveData<Unit>
-        fun refreshSearchedMovies(): Unit?
-        fun loadSearchedMovies(): LiveData<PagedList<MovieItem>>
-        fun searchKeyword(): LiveData<String>
-        fun toastMessageRes(): LiveData<Int>
+        _toastMessage.value = R.string.message_error
     }
 
 }

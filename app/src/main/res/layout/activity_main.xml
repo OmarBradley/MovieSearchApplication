@@ -27,7 +27,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:afterTextChanged='@{(s) -> viewModel.input.inputSearchKeyword(s.toString ?? "")}'/>
+                    android:afterTextChanged='@{(s) -> viewModel.inputSearchKeyword(s.toString ?? "")}'/>
 
             <Button
                     android:id="@+id/button_search"
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:text="@string/label.search"
-                    android:onClick='@{(v) -> viewModel.input.onClickSearchButton()}'/>
+                    android:onClick='@{(v) -> viewModel.onClickSearchButton()}'/>
 
         </LinearLayout>
 

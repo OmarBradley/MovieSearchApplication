@@ -33,12 +33,12 @@ class MainActivity : BaseActivity() {
             addVerticalDecoration()
         }
 
-        with(viewModel.output) {
-            onClickSearchButtonEvent().observe {
-                refreshSearchedMovies()
-                loadSearchedMovies().observe(adapter::submitList)
+        with(viewModel) {
+            onClickSearchButtonEvent.observe {
+                invalidateDataSource()
+                loadSearchedMovies.observe(adapter::submitList)
             }
-            toastMessageRes().observe { longToast(it) }
+            toastMessageRes.observe { longToast(it) }
         }
     }
 
