@@ -13,8 +13,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
 
-    private val viewModel: MainViewModel by viewModel()
-    private val adapter: MovieItemAdapter by lazy { MovieItemAdapter() }
+    private val viewModel: MainViewModel
+            by viewModel()
+    lateinit var adapter: MovieItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class MainActivity : BaseActivity() {
             viewModel = this@MainActivity.viewModel
         }
 
+        adapter = MovieItemAdapter()
         with(recyclerview_searchResult) {
             adapter = this@MainActivity.adapter
             addVerticalDecoration()
