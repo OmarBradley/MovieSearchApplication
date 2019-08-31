@@ -52,6 +52,7 @@ dependencies {
     implementation(Dependency.Paging.common)
     implementation(Dependency.Coroutine.android)
     implementation(Dependency.Coroutine.core)
+    implementation(Dependency.Glide.glide)
 
     implementation(Dependency.Koin.core)
     implementation(Dependency.Koin.coreExt)
@@ -61,6 +62,7 @@ dependencies {
     implementation(Dependency.Lifecycle.viewModelKtx)
 
     kapt(Dependency.Lifecycle.compiler)
+    kapt(Dependency.Glide.compiler)
 
     testImplementation(Dependency.Koin.test)
     testImplementation(Dependency.Spek.dslJvm)
