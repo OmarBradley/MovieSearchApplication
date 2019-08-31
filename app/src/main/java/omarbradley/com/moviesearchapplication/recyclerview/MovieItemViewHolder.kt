@@ -2,6 +2,7 @@ package omarbradley.com.moviesearchapplication.recyclerview
 
 import omarbradley.com.moviesearchapplication.databinding.ItemviewMovieBinding
 import omarbradley.com.util.base.BaseDataBindingViewHolder
+import omarbradley.com.util.router.startInternetBrowser
 
 class MovieItemViewHolder(
     private val binding: ItemviewMovieBinding
@@ -12,8 +13,9 @@ class MovieItemViewHolder(
             this.item = item
             executePendingBindings()
         }
-        itemView.setOnClickListener {
-            // 웹뷰로 이동!
+
+        with(itemView) {
+            setOnClickListener { context.startInternetBrowser(item.link) }
         }
     }
 
