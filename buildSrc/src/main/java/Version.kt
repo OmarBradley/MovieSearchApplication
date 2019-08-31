@@ -14,7 +14,7 @@ internal object Version {
 
     const val testRunner = "1.1.1"
     const val espresso = "3.1.1"
-    const val gradle = "3.5.0-beta01"
+    const val gradle = "3.5.0"
     const val recyclerview = "1.1.0-alpha04"
     const val okhttp3 = "3.11.0"
 
