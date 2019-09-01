@@ -10,8 +10,7 @@ class SearchMovieUseCase(
 ) {
 
     suspend fun searchMoviesTotalCount(searchKeyword: String) =
-        movieRepository.getMovies(SearchMovieQuery(searchKeyword, 100, 1))
-            .count()
+        movieRepository.getTotalItemCount(SearchMovieQuery(searchKeyword))
 
     suspend fun loadMoreSearchedMovies(
         searchKeyword: String,

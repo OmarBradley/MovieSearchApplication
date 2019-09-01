@@ -32,7 +32,7 @@ class MovieItemPositionalDataSource(
             val totalCount = withIoContext {
                 totalCount(searchKeyword)
             }
-            if (totalCount > params.startPosition) {
+            if (totalCount.count > params.startPosition) {
                 val searchedMovies =
                     searchMovieUseCase.loadMoreSearchedMovies(searchKeyword, params.loadSize, params.startPosition + 1)
                         .map(Movie::toMovieItem)
@@ -46,8 +46,8 @@ class MovieItemPositionalDataSource(
             val totalCount = withIoContext {
                 totalCount(searchKeyword)
             }
-            val firstLoadPosition = computeInitialLoadPosition(params, totalCount)
-            val firstLoadSize = computeInitialLoadSize(params, firstLoadPosition, totalCount)
+            val firstLoadPosition = computeInitialLoadPosition(params, totalCount.count)
+            val firstLoadSize = computeInitialLoadSize(params, firstLoadPosition, totalCount.count)
             val searchedMovies =
                 searchMovieUseCase.loadMoreSearchedMovies(searchKeyword, firstLoadSize, firstLoadPosition + 1)
                     .map(Movie::toMovieItem)
