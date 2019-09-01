@@ -15,3 +15,5 @@ projectFilesBackup/.idea/
 .idea/codeStyles/
 
 .idea/
+
+domain/.kotlintest/
