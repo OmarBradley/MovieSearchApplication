@@ -18,7 +18,7 @@ internal object Version {
     const val recyclerview = "1.1.0-alpha04"
     const val okhttp3 = "3.11.0"
 
-    const val retrofit2 = "2.5.0"
+    const val retrofit2 = "2.6.1"
     const val coroutineAdapter = "0.9.2"
 
     const val koin = "2.0.0-rc-2"

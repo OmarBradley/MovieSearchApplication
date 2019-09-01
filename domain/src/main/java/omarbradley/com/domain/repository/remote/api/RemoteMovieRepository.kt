@@ -13,7 +13,6 @@ class RemoteMovieRepository(
 
     override suspend fun getMovies(query: SearchMovieQuery): List<Movie> =
         api.getMovies(query.toQueryMap())
-            .await()
             .items
             .map(MovieJson.ItemJson::toMovie)
 
