@@ -9,14 +9,10 @@ class SearchMovieUseCase(
     private val movieRepository: MovieRepository
 ) {
 
-    suspend fun searchMoviesTotalCount(searchKeyword: String) =
-        movieRepository.getTotalItemCount(SearchMovieQuery(searchKeyword))
+    suspend fun getSearchMovieInfo(searchKeyword: String) =
+        movieRepository.getSearchMovieInfo(SearchMovieQuery(searchKeyword))
 
-    suspend fun loadMoreSearchedMovies(
-        searchKeyword: String,
-        displayItemCount: Int = DEFAULT_DISPLAY_MOVIE_ITEM_COUNT,
-        position: Int
-    ) =
+    suspend fun loadMoreSearchedMovies(searchKeyword: String, displayItemCount: Int = DEFAULT_DISPLAY_MOVIE_ITEM_COUNT, position: Int) =
         movieRepository.getMovies(SearchMovieQuery(searchKeyword, displayItemCount, position))
 
 }

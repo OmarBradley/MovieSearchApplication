@@ -1,8 +1,7 @@
 package omarbradley.com.domain.repository.remote.api
 
 import omarbradley.com.domain.entity.Movie
-import omarbradley.com.domain.entity.TotalCount
-import omarbradley.com.domain.entity.toTotalCount
+import omarbradley.com.domain.entity.SearchMovieInfo
 import omarbradley.com.domain.repository.base.MovieRepository
 import omarbradley.com.domain.repository.remote.json.request.SearchMovieQuery
 import omarbradley.com.domain.repository.remote.json.request.toQueryMap
@@ -13,10 +12,9 @@ class RemoteMovieRepository(
     private val api: MovieApi
 ) : MovieRepository {
 
-    override suspend fun getTotalItemCount(query: SearchMovieQuery): TotalCount =
+    override suspend fun getSearchMovieInfo(query: SearchMovieQuery): SearchMovieInfo =
         api.getMovies(query.toQueryMap())
-            .total
-            .toTotalCount()
+            .run { SearchMovieInfo(total, query.query) }
 
     override suspend fun getMovies(query: SearchMovieQuery): List<Movie> =
         api.getMovies(query.toQueryMap())
