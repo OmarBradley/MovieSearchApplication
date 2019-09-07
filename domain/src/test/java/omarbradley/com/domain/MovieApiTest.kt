@@ -32,10 +32,9 @@ class MovieApiTest : BehaviorSpec({
 
         `when`("영화 검색 api 호출 시") {
             val response = api.getMovies(queryMap)
-                .await()
 
             then("1~3번째의 '액스맨' 영화 정보를 가져온다") {
-                println("data :${response.items}")
+                println("data :${response}")
                 response shouldNotBe null
             }
         }
