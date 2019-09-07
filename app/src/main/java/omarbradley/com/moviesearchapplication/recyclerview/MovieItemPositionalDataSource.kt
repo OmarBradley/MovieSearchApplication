@@ -32,7 +32,7 @@ class MovieItemPositionalDataSource(
 
     override fun loadInitial(params: LoadInitialParams, callback: LoadInitialCallback<MovieItem>) {
         coroutineScope.launch {
-            searchMovieInfo = withIoContext { searchMovieUseCase.getSearchMovieInfo(searchKeyword) }
+            searchMovieInfo = searchMovieUseCase.getSearchMovieInfo(searchKeyword)
             val totalCount = searchMovieInfo.totalCount
             val firstLoadPosition = computeInitialLoadPosition(params, totalCount)
             val firstLoadSize = computeInitialLoadSize(params, firstLoadPosition, totalCount)
