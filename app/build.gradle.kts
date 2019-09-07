@@ -44,8 +44,6 @@ dependencies {
     implementation(project(":domain"))
 
     implementation(Dependency.Kotlin.stblib)
-    implementation(Dependency.AndroidX.appcompat)
-    implementation(Dependency.AndroidX.ktx)
     implementation(Dependency.AndroidX.constraintlayout)
     implementation(Dependency.AndroidX.recyclerview)
     implementation(Dependency.Paging.runtimeKtx)
@@ -60,6 +58,8 @@ dependencies {
     implementation(Dependency.Koin.androidxViewmodel)
 
     implementation(Dependency.Lifecycle.viewModelKtx)
+    implementation(Dependency.Lifecycle.liveData)
+    implementation(Dependency.Lifecycle.lifecycleScope)
 
     kapt(Dependency.Lifecycle.compiler)
     kapt(Dependency.Glide.compiler)

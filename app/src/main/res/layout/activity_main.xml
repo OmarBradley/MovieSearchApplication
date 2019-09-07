@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -27,7 +27,8 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:afterTextChanged='@{(s) -> viewModel.inputSearchKeyword(s.toString ?? "")}'/>
+                    android:afterTextChanged='@{(s) -> viewModel.inputSearchKeyword(s.toString ?? "")}'
+                    tools:ignore="Autofill,LabelFor,TextFields" />
 
             <Button
                     android:id="@+id/button_search"

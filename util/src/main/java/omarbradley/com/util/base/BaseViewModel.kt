@@ -8,11 +8,15 @@ import kotlinx.coroutines.plus
 
 abstract class BaseViewModel : ViewModel() {
 
-    protected val coroutineScope: CoroutineScope by lazy { viewModelScope + coroutineExceptionHandler }
+    protected val coroutineScope: CoroutineScope
+            by lazy { viewModelScope + coroutineExceptionHandler }
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, error ->
-        handleError(error)
-    }
+    private val coroutineExceptionHandler
+            by lazy {
+                CoroutineExceptionHandler { _, error ->
+                    handleError(error)
+                }
+            }
 
     abstract fun handleError(error: Throwable)
 

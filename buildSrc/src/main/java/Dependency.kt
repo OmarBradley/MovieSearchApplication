@@ -23,6 +23,7 @@ object Dependency {
     object AndroidX {
 
         const val appcompat = "androidx.appcompat:appcompat:${Version.appCompat}"
+        const val activity = "androidx.activity:activity-ktx:${Version.activity}"
         const val ktx = "androidx.core:core-ktx:${Version.ktx}"
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Version.constraintlayout}"
         const val recyclerview = "androidx.recyclerview:recyclerview:${Version.recyclerview}"
@@ -39,6 +40,8 @@ object Dependency {
 
         const val compiler = "androidx.lifecycle:lifecycle-compiler:${Version.lifecycle}"
         const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
+        const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.lifecycle}"
+        const val lifecycleScope = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycle}"
     }
 
     object Junit {

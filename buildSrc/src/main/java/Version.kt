@@ -1,9 +1,10 @@
 internal object Version {
 
     const val kotlin = "1.3.31"
-    const val appCompat = "1.1.0-alpha04"
+    const val appCompat = "1.1.0-alpha03"
+    const val activity = "1.1.0-alpha04"
     const val lifecycle = "2.2.0-alpha01"
-    const val ktx = "1.0.1"
+    const val ktx = "1.2.0-alpha04"
     const val constraintlayout = "2.0.0-alpha4"
     const val coroutine = "1.2.1"
 
