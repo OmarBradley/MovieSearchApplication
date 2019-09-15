@@ -9,7 +9,6 @@ import omarbradley.com.domain.entity.Movie
 import omarbradley.com.domain.entity.SearchMovieInfo
 import omarbradley.com.domain.usecase.DEFAULT_DISPLAY_MOVIE_ITEM_COUNT
 import omarbradley.com.domain.usecase.SearchMovieUseCase
-import omarbradley.com.util.withIoContext
 
 class MovieItemDataSourceFactory(
     private val searchMovieUseCase: SearchMovieUseCase,
